@@ -19,25 +19,19 @@ class Formation
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-
      */
-
 
 
     private $id;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="nom_long", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="formation")
+     * 
      */
     private $nomLong;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="agenda")
-     * @ORM\JoinColumn(name="type_formation_id", referencedColumnName="id")
-     */
-    private $typeFormation;
 
     /**
      * @var string
@@ -45,12 +39,7 @@ class Formation
      */
     private $nomCourt;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=255)
-     */
-    private $categorie;
+
 
     /**
      * @var string
@@ -63,35 +52,13 @@ class Formation
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set nomLong
-     *
-     * @param string $nomLong
-     * @return Formation
-     */
-    public function setNomLong($nomLong)
-    {
-        $this->nomLong = $nomLong;
-
-        return $this;
-    }
-
-    /**
-     * Get nomLong
-     *
-     * @return string 
-     */
-    public function getNomLong()
-    {
-        return $this->nomLong;
-    }
 
     /**
      * Set nomCourt
@@ -109,35 +76,14 @@ class Formation
     /**
      * Get nomCourt
      *
-     * @return string 
+     * @return string
      */
     public function getNomCourt()
     {
         return $this->nomCourt;
     }
 
-    /**
-     * Set categorie
-     *
-     * @param string $categorie
-     * @return Formation
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
 
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return string 
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
 
     /**
      * Set descriptif
@@ -155,10 +101,70 @@ class Formation
     /**
      * Get descriptif
      *
-     * @return string 
+     * @return string
      */
     public function getDescriptif()
     {
         return $this->descriptif;
     }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->nomLong = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+
+    /**
+     * Add nomLong
+     *
+     * @param \AdminBundle\Entity\Formation $nomLong
+     * @return Formation
+     */
+    public function addNomLong(\AdminBundle\Entity\Formation $nomLong)
+    {
+        $this->nomLong[] = $nomLong;
+
+        return $this;
+    }
+
+    /**
+     * Remove nomLong
+     *
+     * @param \AdminBundle\Entity\Formation $nomLong
+     */
+    public function removeNomLong(\AdminBundle\Entity\Formation $nomLong)
+    {
+        $this->nomLong->removeElement($nomLong);
+    }
+
+    /**
+     * Get nomLong
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNomLong()
+    {
+        return $this->nomLong;
+    }
+
+    /**
+     * Set nomLong
+     *
+     * @param string $nomCourt
+     * @return Formation
+     */
+    public function setNomLong($nomLong)
+    {
+        $this->nomLong = $nomLong;
+
+        return $this;
+    }
+
+
+
 }

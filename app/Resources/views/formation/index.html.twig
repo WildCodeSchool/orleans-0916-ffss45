@@ -20,15 +20,15 @@
                 <td><a href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a></td>
                 <td>{{ formation.nomLong }}</td>
                 <td>{{ formation.nomCourt }}</td>
-                <td>{{ formation.categorie }}</td>
+                {#<td>{{ formation.categorie }}</td>#}
                 <td>{{ formation.descriptif }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('formation_show', { 'id': formation.id }) }}">show</a>
+                            <a href="{{ path('formation_show', { 'id': formation.id }) }}" class="btn btn-default">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">edit</a>
+                           <a href="{{ path('formation_edit', { 'id': formation.id }) }}" class="btn btn-default">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +39,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('formation_new') }}">Create a new entry</a>
+            <a href="{{ path('formation_new') }}" class="btn btn-default">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Formation;
 use AdminBundle\Form\FormationType;
+use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Formation controller.
@@ -137,4 +139,23 @@ class FormationController extends Controller
             ->getForm()
         ;
     }
+
+
+    public function createAction()
+    {
+        $Formation = new Formation();
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        // tells Doctrine you want to (eventually) save the Product (no queries yet)
+        $em->persist($Formation);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $em->flush();
+
+        return new Response('Saved new product with id '.$Formation->getId());
+    }
+
+
 }

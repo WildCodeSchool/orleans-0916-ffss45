@@ -1,57 +1,65 @@
+
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 
-        <meta charset="UTF-8" />
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <meta charset="UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-        <link href="{{ asset('css/navbar.css')}}" rel="stylesheet">
-        <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
-
-        {% block stylesheets %}
-            <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/espaces.css') }}" rel="stylesheet">
-            <link href="{{ asset ('css/presentation.css') }}" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Open+Sans+Condensed:300|PT+Sans|Questrial|Quicksand|Trirong" rel="stylesheet">
-        {% endblock %}
-
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-        <title>{% block title %}Welcome!{% endblock %}</title>
-
-    </head>
+    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
 
 
-    <body>
+    <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
-    <header>
-        {% block header %}
-            {% include 'FrontBundle:Default:header.html.twig' %}
-        {% endblock %}
-    </header>
-
-        {% block body %}{% endblock %}
-
-    {% block footer %}
-
-        {% include 'FrontBundle:Default:footer.html.twig' %}
+    {% block stylesheets %}
+        <link href="{{ asset('css/admin_agenda.css')}}" rel="stylesheet">
     {% endblock %}
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-    </body>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('responsive-nav.js') }}"></script>
 
-    {% block javascripts %}{% endblock %}
+
+
+    <script src="{{ asset('js/meny.min.js') }}"></script>
+
+
+
+    <title>{% block title %}Administration{% endblock %}</title>
+
+</head>
+
+
+
+<body>
+
+<header>
+    {% block header %}
+
+    {% endblock %}
+</header>
+
+{% block body %}{% endblock %}
+
+{% block footer %}
+
+
+{% endblock %}
+
+
+</body>
+
+{% block javascripts %}
+
+
+{% endblock %}
 
 
 </html>

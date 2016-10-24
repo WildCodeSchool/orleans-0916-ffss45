@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Agenda
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Formation", inversedBy="nomLong")
+     * @ORM\JoinColumn(name="formation_id", referencedColumnName="id")
+     */
+    private $formation;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -70,12 +76,6 @@ class Agenda
      */
     private $adresse;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Formation", mappedBy="typeFormation")
-     */
-    private $agenda;
-
-
 
     /**
      * Get id
@@ -102,7 +102,7 @@ class Agenda
     /**
      * Get dateDeDebut
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDeDebut()
     {
@@ -125,7 +125,7 @@ class Agenda
     /**
      * Get dateDeFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDeFin()
     {
@@ -148,7 +148,7 @@ class Agenda
     /**
      * Get heureDeDebutAm
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHeureDeDebutAm()
     {
@@ -171,7 +171,7 @@ class Agenda
     /**
      * Get heureDeFinAm
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHeureDeFinAm()
     {
@@ -194,7 +194,7 @@ class Agenda
     /**
      * Get heureDeDebutPm
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHeureDeDebutPm()
     {
@@ -217,7 +217,7 @@ class Agenda
     /**
      * Get heureDeFinPm
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHeureDeFinPm()
     {
@@ -240,11 +240,73 @@ class Agenda
     /**
      * Get adresse
      *
-     * @return string 
+     * @return string
      */
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agenda = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add agenda
+     *
+     * @param \AdminBundle\Entity\Formation $agenda
+     * @return Agenda
+     */
+    public function addAgenda(\AdminBundle\Entity\Formation $agenda)
+    {
+        $this->agenda[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     *
+     * @param \AdminBundle\Entity\Formation $agenda
+     */
+    public function removeAgenda(\AdminBundle\Entity\Formation $agenda)
+    {
+        $this->agenda->removeElement($agenda);
+    }
+
+    /**
+     * Get agenda
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAgenda()
+    {
+        return $this->agenda;
+    }
+
+    public function __toString()
+    {
+        return strval($this->id);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $agenda
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
     }
 
 }

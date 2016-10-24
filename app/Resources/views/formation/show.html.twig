@@ -18,8 +18,8 @@
                 <td>{{ formation.nomCourt }}</td>
             </tr>
             <tr>
-                <th>Categorie</th>
-                <td>{{ formation.categorie }}</td>
+                {#<th>Categorie</th>
+                <td>{{ formation.categorie }}</td>#}
             </tr>
             <tr>
                 <th>Descriptif</th>
@@ -30,14 +30,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('formation_index') }}">Back to the list</a>
+            <a href="{{ path('formation_index') }}" class="btn btn-default">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">Edit</a>
+           <a href="{{ path('formation_edit', { 'id': formation.id }) }}" class="btn btn-default">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+          <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

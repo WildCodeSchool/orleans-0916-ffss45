@@ -5,6 +5,8 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class FormationType extends AbstractType
 {
@@ -17,9 +19,10 @@ class FormationType extends AbstractType
         $builder
             ->add('nomLong')
             ->add('nomCourt')
-            ->add('categorie')
+            //->add('categorie')
             ->add('descriptif')
-            ->add('typeFormation')
+            ->add('formation')
+            ->add('save', SubmitType::class)
         ;
     }
     
